@@ -455,7 +455,7 @@
     var mapa=[["Frecuencia compra","q1"],["Donde compra","q2"],["Conoce estilo NY","q3"],["Disposicion a probar","q4"],["Sabores que compraria","q5"],["Precio dispuesto","q6"],["Que valora","q7"],["Caja regalo","q8"],["Importancia empaque","q9"],["Compraria por IG","q10"],["Ocasion","q11"],["Edad","edad"],["Zona","zona"]];
     var resp=mapa.map(function(m){return m[0]+": "+(picked(m[1])||"-");}).join(" | ");
     var payload={full_name:(nombre+" "+apellido).trim(),first_name:nombre,last_name:apellido,email:val("correo"),phone:val("whatsapp"),respuestas:resp,fuente:"Encuesta Galletas",q1:picked("q1"),q2:picked("q2"),q3:picked("q3"),q4:picked("q4"),q5:picked("q5"),q6:picked("q6"),q7:picked("q7"),q8:picked("q8"),q9:picked("q9"),q10:picked("q10"),q11:picked("q11"),edad:picked("edad"),zona:picked("zona")};
-    try{ fetch(WEBHOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); }catch(e){}
+    try{ fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),keepalive:true}); }catch(e){}
   }
 
   // ---- Confeti de marca en la pantalla de gracias ----
